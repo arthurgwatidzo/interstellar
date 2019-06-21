@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 
 import za.co.interstellar.persistence.Edge;
@@ -26,7 +28,7 @@ import za.co.interstellar.utilities.Graph;
 @Service
 public class ShortestDistanceService {
 	
-	
+	private static final Log log = LogFactory.getLog(ShortestDistanceService.class);
 
     private List<Vertex> vertices;
     private List<Edge> edges;
@@ -50,7 +52,8 @@ public class ShortestDistanceService {
         }
     }
 
-    public void initializePlanets(Graph graph) {
+    public void setUpPlanets(Graph graph) {
+    	log.debug("setting up the planets in the Universe");
         this.vertices = new ArrayList<>(graph.getVertexes());
         if (graph.isTrafficAllowed()) {
             graph.processTraffics();
@@ -73,11 +76,12 @@ public class ShortestDistanceService {
             Vertex currentVertex = getVertexWithLowestDistance(unvisitedVertices);
             visitedVertices.add(currentVertex);
             unvisitedVertices.remove(currentVertex);
-            evaluateNeighborsWithMinimalDistances(currentVertex);
+            determineNeighborPlanetsWithMinimalDistances(currentVertex);
         }
     }
 
     private Vertex getVertexWithLowestDistance(Set<Vertex> vertexes) {
+    	log.debug("retrieving the Vertex with the Lowest Distance");
         Vertex lowestVertex = null;
         for (Vertex vertex : vertexes) {
             if (lowestVertex == null) {
@@ -89,8 +93,9 @@ public class ShortestDistanceService {
         return lowestVertex;
     }
 
-    private void evaluateNeighborsWithMinimalDistances(Vertex currentVertex) {
-        List<Vertex> adjacentVertices = getNeighbors(currentVertex);
+    private void determineNeighborPlanetsWithMinimalDistances(Vertex currentVertex) {
+    	log.debug("determining the neighbours with minimal distance");
+        List<Vertex> adjacentVertices = findNeighborPlanets(currentVertex);
         for (Vertex target : adjacentVertices) {
             float alternateDistance = getShortestDistance(currentVertex) + getDistance(currentVertex, target);
             if (alternateDistance < getShortestDistance(target)) {
@@ -101,7 +106,8 @@ public class ShortestDistanceService {
         }
     }
 
-    private List<Vertex> getNeighbors(Vertex currentVertex) {
+    private List<Vertex> findNeighborPlanets(Vertex currentVertex) {
+    	log.debug("finding the neighbouring planets");
         List<Vertex> neighbors = new ArrayList<>();
         for (Edge edge : edges) {
             Vertex destination = fromId(edge.getDestination());
@@ -125,10 +131,12 @@ public class ShortestDistanceService {
     }
 
     private boolean isVisited(Vertex vertex) {
+    	log.debug("checking if vertex has been visited");
         return visitedVertices.contains(vertex);
     }
 
     private Float getShortestDistance(Vertex destination) {
+    	log.debug("finding the shortest distance between points");
         Float d = distance.get(destination);
         if (d == null) {
             return Float.POSITIVE_INFINITY;
@@ -143,7 +151,7 @@ public class ShortestDistanceService {
                 return edge.getDistance() + edge.getTimeDelay();
             }
         }
-        throw new RuntimeException("Error: Something went wrong!");
+        throw new RuntimeException("Error: Failed to get the distance");
     }
 
     public LinkedList<Vertex> getPath(Vertex target) {

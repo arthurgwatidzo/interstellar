@@ -65,6 +65,21 @@ public class InterstellarAPIControllerImplTest {
 
     @Before
     public void setUp() throws Exception {
+    	
+    	Edge edge1 = new Edge(1, "1", "A", "B", 0.44f);
+        Edge edge2 = new Edge(2, "2", "A", "C", 1.89f);
+        Edge edge3 = new Edge(3, "3", "A", "D", 0.10f);
+        Edge edge4 = new Edge(4, "4", "B", "H", 2.44f);
+        Edge edge5 = new Edge(5, "5", "B", "E", 3.45f);
+
+        edgesList = new ArrayList<>();
+        edgesList.add(edge1);
+        edgesList.add(edge2);
+        edgesList.add(edge3);
+        edgesList.add(edge4);
+        edgesList.add(edge5);
+        
+        
         Vertex vertex1 = new Vertex("A", "Pluto");
         Vertex vertex2 = new Vertex("B", "Moon");
         Vertex vertex3 = new Vertex("C", "Mercury");
@@ -78,18 +93,7 @@ public class InterstellarAPIControllerImplTest {
         verticesList.add(vertex4);
         verticesList.add(vertex5);
 
-        Edge edge1 = new Edge(1, "1", "A", "B", 0.44f);
-        Edge edge2 = new Edge(2, "2", "A", "C", 1.89f);
-        Edge edge3 = new Edge(3, "3", "A", "D", 0.10f);
-        Edge edge4 = new Edge(4, "4", "B", "H", 2.44f);
-        Edge edge5 = new Edge(5, "5", "B", "E", 3.45f);
-
-        edgesList = new ArrayList<>();
-        edgesList.add(edge1);
-        edgesList.add(edge2);
-        edgesList.add(edge3);
-        edgesList.add(edge4);
-        edgesList.add(edge5);
+        
 
         Traffic traffic1 = new Traffic("1", "A", "B", 0.30f);
         Traffic traffic2 = new Traffic("2", "A", "C", 0.90f);

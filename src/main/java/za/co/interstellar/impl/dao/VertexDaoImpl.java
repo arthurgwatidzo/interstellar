@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -33,6 +35,8 @@ import za.co.interstellar.persistence.Vertex;
 @Component
 public class VertexDaoImpl implements  VertexDao, Serializable{
 	
+	private static final Log log = LogFactory.getLog(VertexDaoImpl.class);
+	
 
 	@Autowired
     private SessionFactory sessionFactory;
@@ -45,18 +49,21 @@ public class VertexDaoImpl implements  VertexDao, Serializable{
 
     @Override
     public void save(Vertex vertex) {
+    	log.debug("saving a vertex");
         Session session = sessionFactory.getCurrentSession();
         session.save(vertex);
     }
 
     @Override
     public void update(Vertex vertex) {
+    	log.debug("updating a vertex");
         Session session = sessionFactory.getCurrentSession();
         session.merge(vertex);
     }
 
     @Override
     public int delete(String vertexId) {
+    	log.debug("deleting a vertex");
         Session session = sessionFactory.getCurrentSession();
         String qry = "DELETE FROM vertex AS V WHERE V.vertexId = :vertexIdParameter";
         Query query = session.createQuery(qry);
@@ -66,7 +73,8 @@ public class VertexDaoImpl implements  VertexDao, Serializable{
     }
 
     @Override
-    public Vertex selectUnique(String vertexId) {
+    public Vertex findUniqueVertex(String vertexId) {
+    	log.debug("finding a vertex by vetexId");
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(Vertex.class);
         criteria.add(Restrictions.eq("vertexId", vertexId));
@@ -75,7 +83,8 @@ public class VertexDaoImpl implements  VertexDao, Serializable{
     }
 
     @Override
-    public Vertex selectUniqueByName(String name) {
+    public Vertex findUniqueVertexByName(String name) {
+    	log.debug("finding a vertex by vertex name");
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(Vertex.class);
         criteria.add(Restrictions.eq("name", name));
@@ -84,7 +93,8 @@ public class VertexDaoImpl implements  VertexDao, Serializable{
     }
 
     @Override
-    public List<Vertex> selectAll() {
+    public List<Vertex> findAllVertices() {
+    	log.debug("finding all vertices");
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(Vertex.class);
         List<Vertex> vertices = (List<Vertex>) criteria.list();

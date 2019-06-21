@@ -331,7 +331,7 @@ public class InterstellarAPIControllerImpl {
 	        if (pathModel.isUndirectedGraph()) {
 	            graph.setUndirectedGraph(true);
 	        }
-	        shortestDistanceService.initializePlanets(graph);
+	        shortestDistanceService.setUpPlanets(graph);
 	        Vertex source = earthEntityManagerService.getVertexByName(pathModel.getVertexName());
 	        Vertex destination = earthEntityManagerService.getVertexById(pathModel.getSelectedVertex());
 	      

@@ -1,6 +1,7 @@
 package za.co.earth.impl.controller;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -44,14 +45,27 @@ public class EarthIndexControllerImplTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("index"));
     }
+    
+    @Ignore
+    @Test
+    public void verifyIndexViewIsNotCorrect() throws Exception{
+    	//TODO: Negative testing needs to be done
+    }
 
     @Test
     public void verifyErrorPageViewIsCorrect() throws Exception {
-        String message = "Failed to load the page. Please restart again.";
+        String message = "Failed to render the page. Please restart the interstellar application!.";
         mockMvc.perform(get(controller.getErrorPath()))
                 .andExpect(status().isOk())
                 .andExpect(model().attribute("validationMessage", message))
                 .andExpect(view().name("validation"));
+    }
+    
+    
+    @Ignore
+    @Test
+   public  void verifyErrorPageViewIsNotCorrect() throws Exception{
+    	//TODO: Negative testing needs to be done
     }
 
 }

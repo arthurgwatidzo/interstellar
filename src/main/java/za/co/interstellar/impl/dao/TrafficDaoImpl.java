@@ -3,6 +3,8 @@ package za.co.interstellar.impl.dao;
 import java.io.Serializable;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -30,6 +32,8 @@ import za.co.interstellar.persistence.Traffic;
 @Transactional
 public class TrafficDaoImpl implements TrafficDao,Serializable{
 	
+	 private static final Log log = LogFactory.getLog(TrafficDaoImpl.class);
+	
 	@Autowired(required = true)
 	private SessionFactory sessionFactory;
 
@@ -49,6 +53,7 @@ public class TrafficDaoImpl implements TrafficDao,Serializable{
     }
 
     public int delete(String routeId) {
+    	log.debug("deleting a traffic item by route ID");
         Session session = sessionFactory.getCurrentSession();
         String qry = "DELETE FROM traffic AS T WHERE T.routeId = :routeIdParameter";
         Query query = session.createQuery(qry);
@@ -58,6 +63,7 @@ public class TrafficDaoImpl implements TrafficDao,Serializable{
     }
 
     public Traffic findUniqueTraffic(String routeId) {
+    	log.debug("finding a traffic item by route ID");
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(Traffic.class);
         criteria.add(Restrictions.eq("routeId", routeId));
@@ -66,6 +72,7 @@ public class TrafficDaoImpl implements TrafficDao,Serializable{
     }
 
     public List<Traffic> findAllTraffic() {
+    	log.debug("finding all traffic");
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(Traffic.class);
         List<Traffic> trafficList = (List<Traffic>) criteria.list();
@@ -82,6 +89,7 @@ public class TrafficDaoImpl implements TrafficDao,Serializable{
     }
 
     public List<Traffic> trafficExists(Traffic traffic) {
+    	log.debug("Checking if traffic item exists");
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(Traffic.class);
         criteria.add(Restrictions.ne("routeId", traffic.getRouteId()));

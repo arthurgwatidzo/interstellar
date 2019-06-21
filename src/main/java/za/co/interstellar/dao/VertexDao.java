@@ -6,11 +6,11 @@ import za.co.interstellar.persistence.Vertex;
 
 public interface VertexDao {
 
-	public List<Vertex> selectAll();
+	public List<Vertex> findAllVertices();
 
-	public Vertex selectUniqueByName(String name);
+	public Vertex findUniqueVertexByName(String name);
 
-	public Vertex selectUnique(String vertexId);
+	public Vertex findUniqueVertex(String vertexId);
 
 	public int delete(String vertexId);
 
