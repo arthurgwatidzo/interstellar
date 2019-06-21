@@ -18,7 +18,7 @@ public class InterstellarApplication {
 	 private static final Log log = LogFactory.getLog(InterstellarApplication.class);
 
 	public static void main(String[] args) {
-		log.info("Interstellar Application has successfully started up!!!");
+		log.info("Interstellar Application is now starting up. Might take a couple of minutes. Please be patient!!!");
 		SpringApplication.run(InterstellarApplication.class, args);
 	}
 
