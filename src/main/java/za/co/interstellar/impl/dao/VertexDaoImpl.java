@@ -3,6 +3,9 @@ package za.co.interstellar.impl.dao;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceContext;
+
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -29,8 +32,11 @@ import za.co.interstellar.persistence.Vertex;
 @Transactional
 @Component
 public class VertexDaoImpl implements  VertexDao, Serializable{
+	
 
+	@Autowired
     private SessionFactory sessionFactory;
+	
 
     @Autowired
     public VertexDaoImpl(SessionFactory sessionFactory) {

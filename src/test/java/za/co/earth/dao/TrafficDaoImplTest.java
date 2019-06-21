@@ -20,10 +20,9 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
+import za.co.interstellar.configuration.HibernateUtilConfiguration;
 import za.co.interstellar.impl.dao.TrafficDaoImpl;
 import za.co.interstellar.persistence.Traffic;
-//import za.co.stars.configuration.DataSourceComponent;
-import za.co.stars.configuration.PersistenceComponent;
 
 /**
  * @Author Arthur Gwatidzo - 
@@ -36,7 +35,7 @@ import za.co.stars.configuration.PersistenceComponent;
 
 @Transactional
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {Traffic.class, TrafficDaoImpl.class, PersistenceComponent.class},loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {Traffic.class, TrafficDaoImpl.class, HibernateUtilConfiguration.class},loader = AnnotationConfigContextLoader.class)
 public class TrafficDaoImplTest {
 	
 	

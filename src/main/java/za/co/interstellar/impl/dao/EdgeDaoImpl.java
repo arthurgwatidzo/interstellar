@@ -32,6 +32,7 @@ import za.co.interstellar.persistence.Edge;
 @Transactional
 public class EdgeDaoImpl implements EdgeDao,Serializable{
 	
+	 @Autowired
 	 private SessionFactory sessionFactory;
 	 
 	 private static final Log log = LogFactory.getLog(EdgeDaoImpl.class);

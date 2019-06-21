@@ -19,10 +19,9 @@ import static com.shazam.shazamcrest.MatcherAssert.assertThat;
 import static com.shazam.shazamcrest.matcher.Matchers.sameBeanAs;
 import static org.junit.Assert.assertEquals;
 
+import za.co.interstellar.configuration.HibernateUtilConfiguration;
 import za.co.interstellar.impl.dao.EdgeDaoImpl;
 import za.co.interstellar.persistence.Edge;
-//import za.co.stars.configuration.DataSourceComponent;
-import za.co.stars.configuration.PersistenceComponent;
 /**
  * @Author Arthur Gwatidzo - 
  * 
@@ -33,7 +32,7 @@ import za.co.stars.configuration.PersistenceComponent;
  */
 @Transactional
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {Edge.class, EdgeDaoImpl.class, PersistenceComponent.class},loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {Edge.class, EdgeDaoImpl.class, HibernateUtilConfiguration.class},loader = AnnotationConfigContextLoader.class)
 public class EdgeDaoImplTest {
 	
 	
