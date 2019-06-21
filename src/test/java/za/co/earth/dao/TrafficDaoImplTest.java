@@ -127,6 +127,12 @@ public class TrafficDaoImplTest {
         assertThat(persisted, sameBeanAs(expected));
         session.getTransaction().rollback();
     }
+    
+    @Ignore
+    @Test
+    public void verifySelectUniqueTrafficIsNotCorrect() throws Exception {
+    	//TODO: Negative Unit Test will need to be done
+    }
 
   //TODO:	 Revisit the test method below and figure out what the problem is
     @Ignore
@@ -153,6 +159,12 @@ public class TrafficDaoImplTest {
         session.getTransaction().rollback();
     }
     
+    @Ignore
+    @Test
+    public void verifySelecteAllTrafficsIsNotCorrect() throws Exception {
+    	//TODO: Negative Unit Test
+    }
+    
   //TODO:	 Revisit the test method below and figure out what the problem is
     @Ignore
     @Test
@@ -168,6 +180,12 @@ public class TrafficDaoImplTest {
 
         assertThat(returnMax, sameBeanAs(expectedMax));
         session.getTransaction().rollback();
+    }
+    
+    @Ignore
+    @Test
+    public void verifySelectEdgeMaxRecordIsNotCorrect() {
+    	//TODO: Negative Unit Test
     }
 
   //TODO:	 Revisit the test method below and figure out what the problem is
@@ -187,6 +205,12 @@ public class TrafficDaoImplTest {
         List<Traffic> returnedEdges = trafficDao.trafficExists(trafficToCommit);
         assertThat(returnedEdges, sameBeanAs(expectedTraffics));
         session.getTransaction().rollback();
+    }
+    
+    @Ignore
+    @Test
+    public void verifyEdgeExistsSelectionIsNotCorrect() {
+    	//TODO: Negative Unit Test
     }
 
 }

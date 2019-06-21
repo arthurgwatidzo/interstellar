@@ -62,6 +62,12 @@ public class EdgeDaoImplTest {
        
         session.getTransaction().rollback();
     }
+    
+    @Ignore
+    @Test
+    public void verifySaveEdgeIsNotCorrect() throws Exception {
+    	//TODO: Negative Unit Test needs to be written
+    }
 
     @Test
     public void verifyUpdateEdgeIsCorrect() throws Exception {
@@ -84,6 +90,12 @@ public class EdgeDaoImplTest {
         
         session.getTransaction().rollback();
     }
+    
+    @Ignore
+    @Test
+    public void verifyUpdateEdgeIsNotCorrect() throws Exception {
+    	//TODO: Negative Unit Test needs to be written
+    }
 
     
 
@@ -103,6 +115,12 @@ public class EdgeDaoImplTest {
         assertThat(persistedEdge, sameBeanAs(expectedEdge));
        
         session.getTransaction().rollback();
+    }
+    
+    @Ignore
+    @Test
+    public void verifySelectUniqueEdgeIsNotCorrect() {
+    	//TODO: Negative Unit Test needs to be written
     }
 
     @Ignore
@@ -142,6 +160,12 @@ public class EdgeDaoImplTest {
         assertThat(persistedEdge, sameBeanAs(expectedEdges));
         
         session.getTransaction().rollback();
+    }
+    
+    @Ignore
+    @Test
+    public void verifySelectAllEdgesIsNotCorrect() {
+    	//TODO: Negative Unit Test needs to be written
     }
 
     @Test
