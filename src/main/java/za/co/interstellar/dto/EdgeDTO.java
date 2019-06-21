@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 
+import lombok.Data;
+
 /**
  * @Author Arthur Gwatidzo
  * 
@@ -12,6 +14,7 @@ import javax.persistence.Column;
  *         Cell: 076-898-3930
  * 
  */
+@Data
 public class EdgeDTO implements Serializable {
 
 	private String edgeId;
@@ -21,52 +24,6 @@ public class EdgeDTO implements Serializable {
 	private float distance;
 	private float timeDelay;
 
-	public String getEdgeId() {
-		return edgeId;
-	}
-
-	public void setEdgeId(String edgeId) {
-		this.edgeId = edgeId;
-	}
-
-	public long getRecordId() {
-		return recordId;
-	}
-
-	public void setRecordId(long recordId) {
-		this.recordId = recordId;
-	}
-
-	public String getSource() {
-		return source;
-	}
-
-	public void setSource(String source) {
-		this.source = source;
-	}
-
-	public String getDestination() {
-		return destination;
-	}
-
-	public void setDestination(String destination) {
-		this.destination = destination;
-	}
-
-	public float getDistance() {
-		return distance;
-	}
-
-	public void setDistance(float distance) {
-		this.distance = distance;
-	}
-
-	public float getTimeDelay() {
-		return timeDelay;
-	}
-
-	public void setTimeDelay(float timeDelay) {
-		this.timeDelay = timeDelay;
-	}
+	
 
 }

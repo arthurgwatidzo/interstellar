@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan
 public class InterstellarApplication {
-	
+	// Using a root package also allows the @ComponentScan annotation to be used without needing to specify a basePackage attribute	
 	 private static final Log log = LogFactory.getLog(InterstellarApplication.class);
 
 	public static void main(String[] args) {

@@ -28,6 +28,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class HibernateUtilConfiguration {
 	
+	// creating session factory
 	 	@Bean
 	    @Autowired
 	    public LocalSessionFactoryBean sessionFactory() {
@@ -39,6 +40,7 @@ public class HibernateUtilConfiguration {
 	        return sessionFactory;
 	    }
 
+	 // configure hibernate properties
 	    @Bean
 	    @Autowired
 	    public HibernateTransactionManager transactionManager(final SessionFactory sessionFactory) {
@@ -65,7 +67,7 @@ public class HibernateUtilConfiguration {
 	    }
 	    
 	   
-	    
+	 // It will automatically read database properties from application.properties and create DataSource object 
 	    @Bean
 	    public DataSource dataSource() {
 	        DriverManagerDataSource dataSource = new DriverManagerDataSource();
