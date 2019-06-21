@@ -11,14 +11,15 @@ Artifact Generated: 		WAR file
 
 Tools Used:
 -------------------------------------------------------------
-JDK:							Java 8
-Database:						DERBY
-Framework:						SpringBoot
-ORM Tool:						Hibernate 5
-Unit Testing Framework:			JUnit, Mockito, Hamcrest
-Front End Framework:			Thymeleaf
-Dependency Management Tool:		Maven
-Source Code Control:			Git
+JDK:										Java 8
+Database:									DERBY
+Framework:									SpringBoot
+ORM Tool:									Hibernate 5
+Unit Testing Framework:						JUnit, Mockito, Hamcrest
+Front End Framework:						Thymeleaf
+Dependency Management Tool:					Maven
+Source Code Control:						Git
+Auto-insert of getters and setters			Lombok
 
 IDE Used:						Eclipse Java EE IDE for Web Developers.
 Eclipse							Version: Oxygen.3a Release (4.7.3a)
@@ -53,4 +54,9 @@ Outstanding Issues
 7. Add Lombok jar dependency to reduce boilerplate code like on getters/setters
 8. Add more negative unit testing scenarios in Unit Tests
 9. Unit Test areas where exceptions are being thrown
+
+Please Note:
+Before building this project, you must install and configure Lombok.jar into your IDE. See version in POM.XML file
+Also committed this jar into the project folder
+In some instances I used Lombok, as I introduced it at the end of the project. I demonstrated its use (reducing boilerplate code) when writing the DTO classes
 
